@@ -41,7 +41,7 @@ async function startServer() {
   } catch (error) {
     console.error("Error connecting to the database:", error);
   } finally {
-    // После завершения работы с базой данных закрываем соединение
+    // After finishing working with the database, close the connection
     await client.close();
   }
 }
