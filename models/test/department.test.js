@@ -31,6 +31,15 @@ describe('Department', () => {
             });
         }
     });
+    it('should not throw an error if "name" is okay', () => {
+        const cases = ['Management', 'Human Resources'];
+        for (let name of cases) {
+            const dep = new Department({ name });
+            dep.validateSync(err => {
+                expect(err).to.not.exist;
+            });
+        }
+    });
     // Once testing is complete, clean the models
     after(() => {
         mongoose.models = {};
