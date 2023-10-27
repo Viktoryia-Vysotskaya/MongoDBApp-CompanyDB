@@ -6,7 +6,6 @@ describe("Employee", () => {
     beforeEach(() => {
         mongoose.models = {};
     });
-
     it('should throw an error if no "name" is provided', () => {
         const employee = new Employee();
         const validationError = employee.validateSync();
@@ -14,7 +13,6 @@ describe("Employee", () => {
         expect(validationError.errors.lastName).to.exist;
         expect(validationError.errors.department).to.exist;
     });
-
     it('should throw an error if "name" is not a string', () => {
         const cases = [{}, []];
         for (let employeeData of cases) {
@@ -25,7 +23,6 @@ describe("Employee", () => {
             expect(validationError.errors.department).to.exist;
         }
     });
-
     it("should throw an error if arguments do not contain firstName, lastName, department", () => {
         const cases = [
             { firstName: "John" },
@@ -38,7 +35,6 @@ describe("Employee", () => {
             expect(validationError.errors).to.exist;
         }
     });
-
     it("should not throw an error if firstName, lastName, department is correct", () => {
         const cases = [
             { firstName: "John", lastName: "Doe", department: "Tech" },
@@ -50,7 +46,6 @@ describe("Employee", () => {
             expect(validationError).to.be.undefined;
         }
     });
-
     afterEach(() => {
         mongoose.models = {};
     });
