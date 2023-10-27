@@ -22,6 +22,15 @@ describe('Department', () => {
             });
         }
     });
+    it('should throw an error if "name" is too short or too long', () => {
+        const cases = ['Abc', 'abcd', 'Lorem Ipsum, Lorem Ip']; // we test various cases, some of them are too short, some of them are too long
+        for (let name of cases) {
+            const dep = new Department({ name });
+            dep.validateSync(err => {
+                expect(err.errors.name).to.exist;
+            });
+        }
+    });
     // Once testing is complete, clean the models
     after(() => {
         mongoose.models = {};
