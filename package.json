@@ -7,8 +7,10 @@
     "start": "nodemon server.js"
   },
   "dependencies": {
+    "chai": "4.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mocha": "6.2.1",
     "mongodb": "^6.1.0",
     "mongoose": "7.4.3"
   },
