@@ -13,6 +13,15 @@ describe('Department', () => {
             expect(err.errors.name).to.exist;
         });
     });
+    it('should throw an error if "name" is not a string', () => {
+        const cases = [{}, []];
+        for (let name of cases) {
+            const dep = new Department({ name });
+            dep.validateSync(err => {
+                expect(err.errors.name).to.exist;
+            });
+        }
+    });
     // Once testing is complete, clean the models
     after(() => {
         mongoose.models = {};
