@@ -1,11 +1,7 @@
 const Employee = require("../employee.model.js");
 const expect = require("chai").expect;
-const mongoose = require("mongoose");
 
 describe("Employee", () => {
-    beforeEach(() => {
-        mongoose.models = {};
-    });
     it('should throw an error if no "name" is provided', () => {
         const employee = new Employee();
         const validationError = employee.validateSync();
@@ -45,8 +41,5 @@ describe("Employee", () => {
             const validationError = emp.validateSync();
             expect(validationError).to.be.undefined;
         }
-    });
-    afterEach(() => {
-        mongoose.models = {};
     });
 });
